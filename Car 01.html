@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gihid.com</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo img {
+            width: px;
+            height: 30px;
+            margin-right: 0px;
+        }
+
+
+
+        .nav-menu {
+            position: relative;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu ul li {
+            position: relative;
+            margin: 0 15px;
+        }
+
+        .nav-menu ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: 500;
+            padding: 5px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-menu ul li a:hover {
+            background-color: #f0f0f0; /* Light gray background on hover */
+            border: 1px solid #e31b23; /* Red border */
+            color: #e31b23; /* Red text color */
+        }
+
+        .nav-menu ul li a.active {
+            background-color: #e31b23; /* Red background for active item */
+            color: white; /* White text color for active item */
+            border: 1px solid #e31b23; /* Keep the red border for active item */
+        }
+
+        .dropdown {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 35px; /* Positions dropdown below the header line */
+            left: 0;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Default shadow */
+            border: 1px solid #ddd;
+            z-index: 1000;
+            padding: 10px 0;
+            transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
+        }
+
+        .nav-menu ul li:hover .dropdown {
+            display: block;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+        }
+
+        .dropdown ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .dropdown ul li {
+            margin: 0;
+        }
+
+        .dropdown ul li a {
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: black;
+            white-space: nowrap;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown ul li a:hover {
+            background-color: #f0f0f0; /* Light gray background on hover */
+        }
+
+        .user-icon img {
+            width: px;
+            height: 50px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .user-icon img:hover {
+            transform: scale(1.1); /* Slight zoom on hover for the user icon */
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">                                 
+        <img src="coolid2975.png" alt="logo">
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li>
+                    <a href="#" onclick="toggleDropdown(event, this)">Gihid V</a>
+                    <div class="dropdown">
+                        <ul>
+                            <li><a href="#">Cars</a></li>
+                            <li><a href="#">Trucks</a></li>
+                            <li><a href="#">SUVs</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleDropdown(event, this)">Gihid S</a>
+                    <div class="dropdown">
+                        <ul>
+                            <li><a href="#">Build Your Own</a></li>
+                            <li><a href="#">Find a Dealer</a></li>
+                            <li><a href="#">Special Offers</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleDropdown(event, this)">Gihid O</a>
+                    <div class="dropdown">
+                        <ul>
+                            <li><a href="#">Service Center</a></li>
+                            <li><a href="#">Warranty Info</a></li>
+                            <li><a href="#">Manuals & Resources</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#">Gihid Si</a></li>
+            </ul>
+        </nav>
+        <div class="user-icon">
+            <img src="Scrshot 5.53.png" alt="User Icon">
+        </div>
+    </header>
+
+    <script>
+        function toggleDropdown(event, element) {
+            event.preventDefault(); // Prevent default link behavior
+            const dropdown = element.nextElementSibling; // Get the dropdown menu
+            const allDropdowns = document.querySelectorAll('.dropdown');
+            const allLinks = document.querySelectorAll('.nav-menu ul li a');
+
+            // Close other dropdowns
+            allDropdowns.forEach(d => {
+                if (d !== dropdown) {
+                    d.style.display = 'none';
+                }
+            });
+
+            // Deselect all other menu items
+            allLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Toggle the current dropdown and add the active class
+            if (dropdown.style.display === 'block') {
+                dropdown.style.display = 'none';
+                element.classList.remove('active');
+            } else {
+                dropdown.style.display = 'block';
+                element.classList.add('active');
+            }
+        }
+
+        // Close dropdown if clicking outside
+        document.addEventListener('click', function (e) {
+            const isClickInside = e.target.closest('.nav-menu');
+            if (!isClickInside) {
+                document.querySelectorAll('.dropdown').forEach(d => d.style.display = 'none');
+                document.querySelectorAll('.nav-menu ul li a').forEach(link => link.classList.remove('active'));
+            }
+        });
+    </script>
+    
+<style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 5px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #f0f0f0;
+            color: #e31b23;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+        footer a {       
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        footer a:hover {
+               text-decoration: underline;
+        }
+    </style>
+    <main>
+        <!-- Main content goes here -->
+    </main>
+    <footer>
+        <p>Copyright &copy; 2025 Gihid. All rights reserved.</p>
+        <p>
+        
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+        </p>
+    </footer>
+</body>
+</html>
